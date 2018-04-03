@@ -72,31 +72,6 @@ public:
 	static bool RDTSCP			(void) { return CPU_Rep.isIntel_ && CPU_Rep.f_81_EDX_[27]; }
 	static int  CORES			(void) {}
 
-	// Clean ups strings of brand
-	static void RefreshString(
-		char* s,
-		char c = ' ')
-	{
-		if (*s == 0) 
-		{
-			return;
-		}
-		char* frst		= s; 
-		char* scnd		= s + 1;
-		while (*scnd   != 0)
-		{
-			if (*scnd == c && *frst == c) 
-			{
-				++scnd;
-			}
-			else 
-			{
-				*++frst;
-				*frst = *scnd++;
-			}
-		}
-		*++frst = 0;
-	}
 
 private:
 	static const CPUID_Internal CPU_Rep;
@@ -185,9 +160,6 @@ private:
 				memcpy(modelCPU + 32, extdata_[4].data(), sizeof(cpui));
 				brand_ = modelCPU;
 			}
-			RefreshString(modelCPU);
-			RefreshString(vendor);
-
 			unsigned long long pa_mask_save, sa_mask_stub = 0;
 			GetProcessAffinityMask(GetCurrentProcess(), &pa_mask_save, &sa_mask_stub);
 			SYSTEM_INFO sysInfo;
