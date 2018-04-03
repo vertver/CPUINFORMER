@@ -32,10 +32,10 @@
     <ClCompile Include="FULLCPUID.cxx">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="CPU_informerSide.cxx">
+    <ClCompile Include="stdafx.cxx">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="stdafx.cxx">
+    <ClCompile Include="main.cxx">
       <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>
